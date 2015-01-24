@@ -23,12 +23,14 @@
  */
 package com.github.besherman.lifx.examples.alarm;
 
+import android.graphics.Color;
+
 import com.github.besherman.lifx.LFXAlarm;
 import com.github.besherman.lifx.LFXAlarmCollection;
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXHSBKColor;
 import com.github.besherman.lifx.LFXLight;
-import java.awt.Color;
+
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;

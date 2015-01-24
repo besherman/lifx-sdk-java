@@ -23,9 +23,11 @@
  */
 package com.github.besherman.lifx.examples.groups;
 
+import android.graphics.Color;
+
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXGroup;
-import java.awt.Color;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -23,7 +23,8 @@
  */
 package com.github.besherman.lifx;
 
-import java.awt.Color;
+import android.graphics.Color;
+
 import java.beans.PropertyChangeListener;
 
 /**
@@ -70,14 +71,14 @@ public interface LFXGroup extends LFXLightCollection {
     /**
      * Sets the color of all lights in this group.
      */
-    void setColor(Color color);
+    void setColor(int color);
 
     /**
      * Sets the color of all lights in this group.
      * @param color
      * @param duration the fade time in milliseconds
      */
-    void setColor(Color color, long duration);
+    void setColor(int color, long duration);
     
     /**
      * Adds a light to this group.

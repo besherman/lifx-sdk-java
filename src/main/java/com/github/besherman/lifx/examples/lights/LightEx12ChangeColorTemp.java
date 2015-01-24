@@ -23,11 +23,13 @@
  */
 package com.github.besherman.lifx.examples.lights;
 
+import android.graphics.Color;
+
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXHSBKColor;
 import com.github.besherman.lifx.LFXLight;
 import com.github.besherman.lifx.LFXLightCollection;
-import java.awt.Color;
+
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;

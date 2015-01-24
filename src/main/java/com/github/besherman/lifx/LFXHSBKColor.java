@@ -24,7 +24,7 @@
  */
 package com.github.besherman.lifx;
 
-import java.awt.Color;
+import android.graphics.Color;
 
 /**
  * Color described by hue, saturation, brightness and kelvin.
@@ -43,7 +43,7 @@ public class LFXHSBKColor {
     /**
      * Creates a new color with a kelvin of 6500 (to match D6500).
      */
-    public LFXHSBKColor(Color color) {
+    public LFXHSBKColor(int color) {
         this(color, 6500);
     }
     
@@ -52,14 +52,13 @@ public class LFXHSBKColor {
      * @param color an RGB color
      * @param kelvin the kelvin value in the range [0, 10000]
      */
-    public LFXHSBKColor(Color color, int kelvin) {
-        if(color == null) {
-            throw new IllegalArgumentException("color can not be null");
-        }
+    public LFXHSBKColor(int color, int kelvin) {
         if(kelvin < MIN_KELVIN || kelvin > MAX_KELVIN) {
             throw new IllegalArgumentException("kelvin must be between 0 and 10 000");
         }
-        float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+
+        float[] hsb = new float[3];
+        Color.colorToHSV(color, hsb);
         this.hue = hsb[0] * 360;
         this.saturation = hsb[1];
         this.brightness = hsb[2];

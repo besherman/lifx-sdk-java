@@ -23,10 +23,12 @@
  */
 package com.github.besherman.lifx.examples.lights;
 
+import android.graphics.Color;
+
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXLight;
 import com.github.besherman.lifx.LFXLightCollection;
-import java.awt.Color;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -52,11 +54,11 @@ public class LightEx10RandomlyBlinkLights {
     
     private static class Task extends TimerTask {
         private final LFXLightCollection lights;
-        private final List<Color> colors = Arrays.asList(
-                Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, 
-                Color.ORANGE, Color.PINK, Color.RED, Color.YELLOW);
+        private final List<Number> colors = Arrays.asList(
+                (Number) Color.BLUE, (Number) Color.CYAN, (Number) Color.GREEN, (Number) Color.MAGENTA,
+                (Number) 0xFFFFA500, (Number) 0xFFFF69B4, (Number) Color.RED, (Number) Color.YELLOW);
         private final Random random = new Random();
-        private volatile Color last;
+        private volatile Number last;
 
         public Task(LFXLightCollection lights) {
             this.lights = lights;
@@ -64,16 +66,16 @@ public class LightEx10RandomlyBlinkLights {
         
         @Override
         public void run() {
-            Color color = null;
+            Number color = null;
             do {
                 color = colors.get(random.nextInt(colors.size()));
-            } while(color == last);            
+            } while(color.equals(last));
             
             for(LFXLight light: lights) {
                 if(!light.isPower()) {
                     light.setPower(true);
                 }                
-                light.setColor(color);
+                light.setColor(color.intValue());
             }
             last = color;
         }
