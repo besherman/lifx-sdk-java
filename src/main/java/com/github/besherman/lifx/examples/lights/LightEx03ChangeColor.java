@@ -25,7 +25,6 @@ package com.github.besherman.lifx.examples.lights;
 
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXLight;
-import java.awt.Color;
 
 /**
  * Changes the color on all lights.
@@ -38,7 +37,7 @@ public class LightEx03ChangeColor {
             for(LFXLight light: client.getLights()) {
                 System.out.format("Setting color on '%s' %n", light.getLabel());
                 light.setPower(true);
-                light.setColor(Color.PINK);
+                light.setColor(0xFFFF69B4);
             }            
         } finally {
             client.close();

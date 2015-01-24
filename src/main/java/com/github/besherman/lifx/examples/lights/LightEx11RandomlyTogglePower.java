@@ -26,10 +26,7 @@ package com.github.besherman.lifx.examples.lights;
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXLight;
 import com.github.besherman.lifx.LFXLightCollection;
-import java.awt.Color;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

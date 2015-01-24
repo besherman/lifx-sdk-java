@@ -23,12 +23,14 @@
  */
 package com.github.besherman.lifx.examples.alarm;
 
+import android.graphics.Color;
+
 import com.github.besherman.lifx.LFXAlarm;
 import com.github.besherman.lifx.LFXAlarmCollection;
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXHSBKColor;
 import com.github.besherman.lifx.LFXLight;
-import java.awt.Color;
+
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,7 +51,7 @@ public class AlarmEx02SetAlarm {
                 LFXAlarmCollection alarms = light.getAlarms();
                 if(alarms.size() > 0) {
                     System.out.format("Adding alarm to light '%s': %n", light.getLabel());
-                    alarms.set(0, new LFXAlarm(time, new LFXHSBKColor(Color.BLUE), 7 * 1000));                    
+                    alarms.set(0, new LFXAlarm(time, new LFXHSBKColor(Color.BLUE), 7 * 1000));
                 } else {
                     Logger.getLogger(AlarmEx02SetAlarm.class.getName()).log(Level.INFO, "Alarms was not loaded");
                 }

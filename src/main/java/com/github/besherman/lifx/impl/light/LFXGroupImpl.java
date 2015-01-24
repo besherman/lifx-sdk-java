@@ -23,7 +23,6 @@
  */
 package com.github.besherman.lifx.impl.light;
 
-import com.github.besherman.lifx.impl.entities.internal.LFXTagID;
 import com.github.besherman.lifx.LFXGroup;
 import com.github.besherman.lifx.LFXHSBKColor;
 import com.github.besherman.lifx.LFXLight;
@@ -31,13 +30,14 @@ import com.github.besherman.lifx.LFXLightCollectionListener;
 import com.github.besherman.lifx.impl.entities.LFXPowerState;
 import com.github.besherman.lifx.impl.entities.internal.LFXBinaryTypes;
 import com.github.besherman.lifx.impl.entities.internal.LFXMessage;
+import com.github.besherman.lifx.impl.entities.internal.LFXTagID;
 import com.github.besherman.lifx.impl.entities.internal.LFXTarget;
 import com.github.besherman.lifx.impl.entities.internal.structle.LxProtocol;
 import com.github.besherman.lifx.impl.entities.internal.structle.LxProtocolDevice;
 import com.github.besherman.lifx.impl.entities.internal.structle.LxProtocolLight;
 import com.github.besherman.lifx.impl.entities.internal.structle.StructleTypes;
 import com.github.besherman.lifx.impl.network.LFXMessageRouter;
-import java.awt.Color;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.UnsupportedEncodingException;
@@ -123,12 +123,12 @@ public class LFXGroupImpl implements LFXGroup {
     }
 
     @Override
-    public void setColor(Color color) {
+    public void setColor(int color) {
         setColor(new LFXHSBKColor(color));
     }
 
     @Override
-    public void setColor(Color color, long duration) {
+    public void setColor(int color, long duration) {
         setColor(new LFXHSBKColor(color), duration);
     }
 
