@@ -23,9 +23,10 @@
  */
 package com.github.besherman.lifx;
 
+import com.github.besherman.lifx.impl.util.LFXObjectUtils;
+
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.Objects;
 
 
 /**
@@ -67,8 +68,8 @@ public class LFXInterfaceFirmware {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.build);
-        hash = 37 * hash + Objects.hashCode(this.install);
+        hash = 37 * hash + LFXObjectUtils.hashCode(this.build);
+        hash = 37 * hash + LFXObjectUtils.hashCode(this.install);
         hash = 37 * hash + this.majorVersion;
         hash = 37 * hash + this.minorVersion;
         return hash;
@@ -83,10 +84,10 @@ public class LFXInterfaceFirmware {
             return false;
         }
         final LFXInterfaceFirmware other = (LFXInterfaceFirmware) obj;
-        if (!Objects.equals(this.build, other.build)) {
+        if (!LFXObjectUtils.equals(this.build, other.build)) {
             return false;
         }
-        if (!Objects.equals(this.install, other.install)) {
+        if (!LFXObjectUtils.equals(this.install, other.install)) {
             return false;
         }
         if (this.majorVersion != other.majorVersion) {

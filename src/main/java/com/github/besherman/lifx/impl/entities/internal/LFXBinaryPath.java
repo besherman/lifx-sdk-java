@@ -24,7 +24,7 @@
  */
 package com.github.besherman.lifx.impl.entities.internal;
 
-import java.util.Objects;
+import com.github.besherman.lifx.impl.util.LFXObjectUtils;
 
 /**
  * The path to a bulb. This consists of two parts:
@@ -64,8 +64,8 @@ public class LFXBinaryPath {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.siteID);
-        hash = 29 * hash + Objects.hashCode(this.targetID);
+        hash = 29 * hash + LFXObjectUtils.hashCode(this.siteID);
+        hash = 29 * hash + LFXObjectUtils.hashCode(this.targetID);
         return hash;
     }
 
@@ -78,10 +78,10 @@ public class LFXBinaryPath {
             return false;
         }
         final LFXBinaryPath other = (LFXBinaryPath) obj;
-        if (!Objects.equals(this.siteID, other.siteID)) {
+        if (!LFXObjectUtils.equals(this.siteID, other.siteID)) {
             return false;
         }
-        if (!Objects.equals(this.targetID, other.targetID)) {
+        if (!LFXObjectUtils.equals(this.targetID, other.targetID)) {
             return false;
         }
         return true;

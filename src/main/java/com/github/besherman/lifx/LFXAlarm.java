@@ -23,8 +23,9 @@
  */
 package com.github.besherman.lifx;
 
+import com.github.besherman.lifx.impl.util.LFXObjectUtils;
+
 import java.util.Date;
-import java.util.Objects;
 
 /**
  * Specifies an alarm for a light. 
@@ -179,10 +180,10 @@ public class LFXAlarm {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.time);
+        hash = 53 * hash + LFXObjectUtils.hashCode(this.time);
         hash = 53 * hash + (this.power ? 1 : 0);
         hash = 53 * hash + (int) (this.duration ^ (this.duration >>> 32));
-        hash = 53 * hash + Objects.hashCode(this.waveform);
+        hash = 53 * hash + LFXObjectUtils.hashCode(this.waveform);
         return hash;
     }
 
@@ -195,7 +196,7 @@ public class LFXAlarm {
             return false;
         }
         final LFXAlarm other = (LFXAlarm) obj;
-        if (!Objects.equals(this.time, other.time)) {
+        if (!LFXObjectUtils.equals(this.time, other.time)) {
             return false;
         }
         if (this.power != other.power) {
@@ -204,7 +205,7 @@ public class LFXAlarm {
         if (this.duration != other.duration) {
             return false;
         }
-        if (!Objects.equals(this.waveform, other.waveform)) {
+        if (!LFXObjectUtils.equals(this.waveform, other.waveform)) {
             return false;
         }
         return true;

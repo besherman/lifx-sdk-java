@@ -24,11 +24,12 @@
  */
 package com.github.besherman.lifx.impl.entities.internal;
 
+import com.github.besherman.lifx.impl.util.LFXObjectUtils;
+
 import java.util.ArrayList;
 
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -159,9 +160,9 @@ public class LFXBinaryTargetID {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.targetType);
-        hash = 43 * hash + Objects.hashCode(this.groupTagField);
-        hash = 43 * hash + Objects.hashCode(this.deviceId);
+        hash = 43 * hash + LFXObjectUtils.hashCode(this.targetType);
+        hash = 43 * hash + LFXObjectUtils.hashCode(this.groupTagField);
+        hash = 43 * hash + LFXObjectUtils.hashCode(this.deviceId);
         return hash;
     }
 
@@ -177,10 +178,10 @@ public class LFXBinaryTargetID {
         if (this.targetType != other.targetType) {
             return false;
         }
-        if (!Objects.equals(this.groupTagField, other.groupTagField)) {
+        if (!LFXObjectUtils.equals(this.groupTagField, other.groupTagField)) {
             return false;
         }
-        if (!Objects.equals(this.deviceId, other.deviceId)) {
+        if (!LFXObjectUtils.equals(this.deviceId, other.deviceId)) {
             return false;
         }
         return true;

@@ -23,7 +23,7 @@
  */
 package com.github.besherman.lifx;
 
-import java.util.Objects;
+import com.github.besherman.lifx.impl.util.LFXObjectUtils;
 
 /**
  * The color and waveform of a light. 
@@ -148,7 +148,7 @@ public class LFXWaveform {
         int hash = 7;
         hash = 17 * hash + this.stream;
         hash = 17 * hash + (this.transientType ? 1 : 0);
-        hash = 17 * hash + Objects.hashCode(this.color);
+        hash = 17 * hash + LFXObjectUtils.hashCode(this.color);
         hash = 17 * hash + (int) (this.period ^ (this.period >>> 32));
         hash = 17 * hash + Float.floatToIntBits(this.cycles);
         hash = 17 * hash + this.skewRatio;
@@ -171,7 +171,7 @@ public class LFXWaveform {
         if (this.transientType != other.transientType) {
             return false;
         }
-        if (!Objects.equals(this.color, other.color)) {
+        if (!LFXObjectUtils.equals(this.color, other.color)) {
             return false;
         }
         if (this.period != other.period) {

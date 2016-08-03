@@ -24,7 +24,7 @@
  */
 package com.github.besherman.lifx.impl.entities.internal;
 
-import java.util.Objects;
+import com.github.besherman.lifx.impl.util.LFXObjectUtils;
 
 /**
  * Specifies the target of a message, used for outgoing messages. 
@@ -117,9 +117,9 @@ public class LFXTarget {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.targetType);
-        hash = 23 * hash + Objects.hashCode(this.deviceID);
-        hash = 23 * hash + Objects.hashCode(this.tag);
+        hash = 23 * hash + LFXObjectUtils.hashCode(this.targetType);
+        hash = 23 * hash + LFXObjectUtils.hashCode(this.deviceID);
+        hash = 23 * hash + LFXObjectUtils.hashCode(this.tag);
         return hash;
     }    
 }
