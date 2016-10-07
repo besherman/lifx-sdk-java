@@ -27,7 +27,6 @@ import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXHSBKColor;
 import com.github.besherman.lifx.LFXLight;
 import com.github.besherman.lifx.LFXLightCollection;
-import java.awt.Color;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -72,7 +71,7 @@ public class LightEx12ChangeColorTemp {
                     temp = MIN_TEMP;
                 }
                 System.out.println(temp);
-                LFXHSBKColor color = new LFXHSBKColor(Color.WHITE, temp);
+                LFXHSBKColor color = new LFXHSBKColor(0xFFFFFFFF, temp);
                 for(LFXLight light: lights) {
                     if(!light.isPower()) {
                         light.setPower(true);

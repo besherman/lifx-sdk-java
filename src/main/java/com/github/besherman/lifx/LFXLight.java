@@ -23,7 +23,6 @@
  */
 package com.github.besherman.lifx;
 
-import java.awt.Color;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
 
@@ -85,14 +84,14 @@ public interface LFXLight {
     /**
      * Sets the lights color.
      */
-    void setColor(Color color);
+    void setColor(int color);
     
     /**
      * Sets the lights color over time.
      * @param color the color to set.
      * @param duration the fade time in milliseconds.
      */
-    void setColor(Color color, long duration);
+    void setColor(int color, long duration);
     
     /**
      * Returns the brightness component of the current color.

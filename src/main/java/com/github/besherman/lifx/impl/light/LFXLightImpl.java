@@ -38,7 +38,6 @@ import com.github.besherman.lifx.impl.entities.internal.structle.LxProtocolLight
 import com.github.besherman.lifx.impl.entities.internal.structle.StructleTypes;
 import com.github.besherman.lifx.impl.network.LFXMessageRouter;
 import com.github.besherman.lifx.impl.network.LFXTimerQueue;
-import java.awt.Color;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.UnsupportedEncodingException;
@@ -133,12 +132,12 @@ public class LFXLightImpl implements LFXLight {
     }
 
     @Override
-    public void setColor(Color color) {
+    public void setColor(int color) {
         setColor(new LFXHSBKColor(color));
     }
 
     @Override
-    public void setColor(Color color, long duration) {
+    public void setColor(int color, long duration) {
         setColor(new LFXHSBKColor(color), duration);
     }
 

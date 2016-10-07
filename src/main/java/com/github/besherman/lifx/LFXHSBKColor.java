@@ -24,8 +24,6 @@
  */
 package com.github.besherman.lifx;
 
-import java.awt.Color;
-
 /**
  * Color described by hue, saturation, brightness and kelvin.
  * 
@@ -43,7 +41,7 @@ public class LFXHSBKColor {
     /**
      * Creates a new color with a kelvin of 6500 (to match D6500).
      */
-    public LFXHSBKColor(Color color) {
+    public LFXHSBKColor(int color) {
         this(color, 6500);
     }
     
@@ -52,14 +50,12 @@ public class LFXHSBKColor {
      * @param color an RGB color
      * @param kelvin the kelvin value in the range [0, 10000]
      */
-    public LFXHSBKColor(Color color, int kelvin) {
-        if(color == null) {
-            throw new IllegalArgumentException("color can not be null");
-        }
+    public LFXHSBKColor(int color, int kelvin) {
         if(kelvin < MIN_KELVIN || kelvin > MAX_KELVIN) {
             throw new IllegalArgumentException("kelvin must be between 0 and 10 000");
         }
-        float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+
+        float[] hsb = LFXHSBKColor.RGBtoHSB(color, null);
         this.hue = hsb[0] * 360;
         this.saturation = hsb[1];
         this.brightness = hsb[2];
@@ -199,5 +195,47 @@ public class LFXHSBKColor {
             return false;
         }
         return true;
+    }
+
+    // source: java.awt.Color
+    public static float[] RGBtoHSB(int color, float[] hsbvals) {
+        int r = (color >> 16) & 0xFF;
+        int g = (color >> 8) & 0xFF;
+        int b = color & 0xFF;
+
+        float hue, saturation, brightness;
+        if (hsbvals == null) {
+            hsbvals = new float[3];
+        }
+        int cmax = (r > g) ? r : g;
+        if (b > cmax) cmax = b;
+        int cmin = (r < g) ? r : g;
+        if (b < cmin) cmin = b;
+
+        brightness = ((float) cmax) / 255.0f;
+        if (cmax != 0)
+            saturation = ((float) (cmax - cmin)) / ((float) cmax);
+        else
+            saturation = 0;
+        if (saturation == 0)
+            hue = 0;
+        else {
+            float redc = ((float) (cmax - r)) / ((float) (cmax - cmin));
+            float greenc = ((float) (cmax - g)) / ((float) (cmax - cmin));
+            float bluec = ((float) (cmax - b)) / ((float) (cmax - cmin));
+            if (r == cmax)
+                hue = bluec - greenc;
+            else if (g == cmax)
+                hue = 2.0f + redc - bluec;
+            else
+                hue = 4.0f + greenc - redc;
+            hue = hue / 6.0f;
+            if (hue < 0)
+                hue = hue + 1.0f;
+        }
+        hsbvals[0] = hue;
+        hsbvals[1] = saturation;
+        hsbvals[2] = brightness;
+        return hsbvals;
     }
 }

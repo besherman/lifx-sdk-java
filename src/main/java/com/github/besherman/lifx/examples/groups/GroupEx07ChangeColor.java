@@ -25,7 +25,6 @@ package com.github.besherman.lifx.examples.groups;
 
 import com.github.besherman.lifx.LFXClient;
 import com.github.besherman.lifx.LFXGroup;
-import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,7 +41,7 @@ public class GroupEx07ChangeColor {
                 Logger.getLogger(GroupEx07ChangeColor.class.getName()).log(Level.INFO, "No test group found");
                 return;
             }
-            group.setColor(Color.MAGENTA);
+            group.setColor(0xFFFF00FF);
         } finally {
             client.close();
         }
